@@ -1,66 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { View,Text,StyleSheet } from "react-native";
+import Saludo from "./assets/Components/saludo";
 
-export default function App() {
 
-  const [enteredgoalText,setEnteredGoal] =useState("");
-  const [courseGoals, setCourseGoals] = useState ([]);
+function App(){
+  return(
+  <View>
+    <Text style={styles.text}>Componentes</Text>
+    <Saludo persona ="juanito"/>
+    <Saludo persona ="ignacio"/>
+    <StatusBar style="auto"/>
+  </View>
+  
 
-  function goalInputHandler(enteredText) {
-    setEnteredGoal(enteredText)
-  };
-   
-
-  function addGoalHandler() {
-    setCourseGoals((currentCourseGoals) =>[...currentCourseGoals,enteredgoalText]);
-  }
-
-  return (
-    <View style={styles.appContainer} >
-      <View style={styles.inputContainer}>
-        <TextInput style={styles.textImput} placeholder='Your course goal!' onChangeText={goalInputHandler}  /> 
-        <Button title='Add Goal' onPress={addGoalHandler}/>
-      </View>
-      
-      <View style={styles.goalsContainer}>
-        {courseGoals.map((goal)=><Text key={(goal)}>{goal}</Text>)}
-      </View>
-      
-    </View>
   );
+
 }
 
+
+export default App;
+
 const styles = StyleSheet.create({
+  text:{
+    marginTop: 50
+    
 
-  appContainer:{
-    padding: 50,
-    paddingHorizontal:26,
-    flex:1
-
-
-  },
-
-  inputContainer:{
-    flex: 1,
-    flexDirection:"row",
-    justifyContent:"space-between",
-    alignItems: "center",
-    marginBottom:16,
-    borderBottomWidth:1,
-    borderBottomColor:"#cccccc"
-
-  },
-  textImput:{
-    borderWidth: 1,
-    borderColor:"#cccccc",
-    width:"70%",
-    marginRight:8,
-    padding: 8
-
-  },
-  goalsContainer:{
-    flex:5
   }
-  
-});
+
+})
